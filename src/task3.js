@@ -12,5 +12,5 @@ export const trigonSquaer = (arr) => {
     sqares.sort();
     sqares.join();
     console.log(sqares);
-    document.querySelector('.task2').innerHTML = sqares;
+    document.querySelector('.task3').innerHTML = sqares;
 }

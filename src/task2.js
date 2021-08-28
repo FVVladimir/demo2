@@ -1,7 +1,7 @@
 export const envelop1 = {h:19, w:20};
 export const envelop2 = {h:16, w:19};
 
-export const check = (obj1, obj2) => {
+export const checkEnvelop = (obj1, obj2) => {
 
       if(obj1.w > obj2.w && obj1.h > obj2.h){
         
