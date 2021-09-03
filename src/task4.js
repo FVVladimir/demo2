@@ -6,11 +6,13 @@ export const checkPalindrom = (num) => {
        
         if (numStr[i] == numStr[numStr.length - 1 - i]) {
 
-            console.log('это палиндром');
+            // console.log('это палиндром');
+            return 'это палиндром'
 
         } else {
 
-            console.log('это не палиндром');
+            // console.log('это не палиндром');
+            return 'это не палиндром';
             
         }
         
