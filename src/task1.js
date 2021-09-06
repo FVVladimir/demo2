@@ -31,10 +31,8 @@ export const chessBoard = (boardHight, boardWidth, symbol) => {
                      a += '\n';
                  };
 
-                 };   
-    
-       document.querySelector('.task1').innerHTML = a;    
-       console.log(a);
+                 }; 
+    //    console.log(a);
        return a;
       
     };

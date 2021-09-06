@@ -3,43 +3,95 @@ export const context = {
     max: 345487
 };
 
-
-export const countTicket = (obj) => {
-     const diapazon = [];
+export const countTicket = (tickets) => {
      
-    for (let i =  obj.min; i <= obj.max; i +=1){
-
-         diapazon.push(i);
-    };    
-
-    const firstPart = diapazon.map((item) => {    
-           return item.toString().slice(0,3)
-    })
+    if(tickets == undefined){
+        return false;
+    }
     
-    // const secondPart = diapazon.map((item) => {
-    //     return item.toString().slice(3,6);
-    // })
+    if(typeof(tickets) != 'object'){
+        return false;
+    } 
+       else if(tickets.min < tickets.max){
+        
+        let result = {
+            method : 0,
+            firstMethod : 0,
+            secondMethod : 0
+        };        
+        
+        let happy1 = 0;
+        let happy2 = 0;
 
-    // const firstPartSplit = firstPart.map((item) => {
-    //     return item.split('');
-    // });
+        let min = tickets.min;
+        let max = tickets.max;
 
-    // for (let i = 0; i <= firstPartSplit.length; i += 1){
-         
-    //     let c = firstPartSplit[i]
-         
-    //     for (let k = 0; k <= c.length; k += 1){
-    //          console.log(Number(c[k]));
-    //     }
-    // }
+        while(min < max){
+            
+            let x = min.toString().split('');
 
-    // let arrNum = firstPartSplit.map((item) => {
-    //     return Number(item);
-    // });
-    //  arrNum.reduce((acc, el) => acc + el, 0);
+            let sumFirst = +x[0] + +x[1] + +x[2];
+            let sumLast = +x[3] + +x[4] + +x[5];
+            
+            if(sumFirst == sumLast){ result.firstMethod += 1; }
 
-//    console.log(firstPart);
-// //    console.log(secondPart);
-//    console.log(firstPartSplit);
-//    console.log(arrNum);
+            let sumOdd = 0;
+            let sumEven = 0;
+            
+            for(let i = 0; i < x.length; i += 1){
+                
+                x[i] % 2 ? sumEven += +x[i] : sumOdd += +x[i];
+            }
+            if(sumOdd == sumEven){ result.secondMethod += 1; }
+
+            min += 1;
+        }
+        result.method = happy1 >= happy2 ? 1 : 2;
+        
+        return result;
+    }
+    
+    return false;
 }
+
+// export const countTicket = (obj) => {
+//      const diapazon = [];          
+     
+//     for (let i =  obj.min; i <= obj.max; i +=1){
+
+//          diapazon.push(i);
+//     };  
+
+//     let firstMethod = 0;
+//     let secondMethod = 0;
+    
+//     for (let i = 0; i <= diapazon.length; i +=1){
+        
+//          let a = diapazon[i].toString().split('');
+//          let sumFirst = +a[0] + +a[1] + +a[2];
+//          let sumSecond = +a[3] + +a[4] + +a[5];
+
+//          if(sumFirst == sumSecond) {
+             
+//             firstMethod += 1;
+//          }         
+//     }; 
+    
+//     console.log(firstMethod);
+    
+//     let odd = 0;
+//     let even = 0;    
+
+//     for (let i = 0; i <= diapazon.length; i += 1) {               
+    
+//         let a = diapazon[i].toString().split('');
+//             a[i] % 2 == 0 ? even += +a[i] : odd += +a[i];
+
+//         if(odd == even){ 
+            
+//             secondMethod += 1;
+//          }
+        
+//      }
+//      console.log(secondMethod);     
+// };
